@@ -81,13 +81,6 @@ class ScriptOptimizer extends Optimizer {
   }
 
   static async optimizeScript(script, context) {
-    if (script.lib && script.lib.isVulnerable) {
-      const latestVersion = await getLatestVersion(script.lib.npm, script.lib.version);
-      return {
-        ...script,
-        optimizedUrl: getCdnUrl(script.lib.npm, latestVersion),
-      };
-    }
     if (!script.isFromSameSite) {
       return {
         ...script,

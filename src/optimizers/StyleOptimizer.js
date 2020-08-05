@@ -140,7 +140,7 @@ class StyleOptimizer extends Optimizer {
     const stylesheetMapByUrl = toMapByKey(stylesheets, 'src');
     const pageUrl = artifacts.URL.finalUrl;
     $('link[href][rel="stylesheet"]').each((i, element) => {
-      const stylesheetUrl = toFullPathUrl(pageUrl, $(element).attr('href'));
+      const stylesheetUrl = '/' + $(element).attr('href');
       const stylesheet = stylesheetMapByUrl.get(stylesheetUrl);
       if (stylesheet) {
         this.applyOptimizedStylesheet($(element), stylesheet);
